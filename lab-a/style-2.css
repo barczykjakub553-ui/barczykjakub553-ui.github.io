@@ -1,3 +1,359 @@
+/* Tło całej strony */
 body {
-  background-color: #ecfbe6;
+  background: #ffffff;
+  color: #222;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
 }
+
+/* Główny kontener */
+main, header, footer {
+  background: #ffffff;
+  max-width: 95vw;
+  margin: 5vh auto 0 auto;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  border-radius: 20px;
+  padding: 5vw 5vw 3vw 5vw;
+  box-sizing: border-box;
+}
+
+img {
+  border: #111111;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+header {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  box-shadow: none;
+  background: #ffffff;
+}
+
+footer {
+  margin-top: 5vh;
+  margin-bottom: 5px;
+  background: #ffffff;
+  text-align: center;
+  font-size: 1rem;
+  color: #888;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 400;
+  color: #222;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+h2 {
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0.8em;
+}
+
+h3 {
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0.8em;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 1em 0;
+  color: #444;
+}
+
+ul {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.2em 2em;
+  margin: 1.5em 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+li {
+  font-size: 1rem;
+  margin: 0.6em 0;
+  color: #444;
+}
+
+/* Pasek nawigacji */
+/* Pasek nawigacji */
+nav {
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5em;
+  padding: 1.5em 0 1em 0;
+  border-bottom: 1px solid #eee;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 2em;
+  position: sticky;      /* ← DODAJ TE 3 LINIJKI */
+  top: 0;                /* ← */
+  z-index: 1000;         /* ← */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);  /* Dodatkowy cień na scrollu */
+}
+
+
+nav a {
+  color: #222;
+  text-decoration: none;
+  padding-bottom: 0.2em;
+  border-bottom: 2px solid transparent;
+  transition: border 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+nav a.active, nav a:hover {
+  border-bottom: 2px solid #222;
+  color: #111;
+}
+
+/* Dropdown menu */
+nav .dropdown {
+  position: relative;
+  display: flex;
+  vertical-align: middle;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  color: #222;
+  text-decoration: none;
+  padding-bottom: 0.2em;
+  border-bottom: 2px solid transparent;
+  transition: border 0.2s, color 0.2s;
+}
+
+.dropdown-toggle:hover {
+  border-bottom: 2px solid #222;
+  color: #111;
+}
+
+nav .dropdown .categories {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 2.5em;
+  transform: translateX(-50%);
+  min-width: 220px;
+  z-index: 100;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  padding: 1.5em 2em;
+  margin: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+nav .dropdown:hover .categories,
+nav .dropdown:focus-within .categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+nav .dropdown .categories a {
+  color: #222;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0;
+  border: none;
+  border-bottom: none;
+}
+
+nav .dropdown .categories a:hover {
+  color: #666;
+  border-bottom: none;
+}
+
+
+/* Główne kontenery z obrazkami */
+.chicken-container {
+  display: none;
+}
+
+main + .main-image-container {
+  display: block;
+  margin: 2.5rem 0;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Układ sekcji - panele */
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Karty - panele z tekstem */
+.card {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 1rem;
+  align-items: start;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 2.5rem 0;
+  padding: 0;
+}
+
+.card:nth-child(odd) {
+  grid-template-columns: 1fr 1fr;
+}
+
+.card:nth-child(even) {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Pozycjonowanie tekstu w kartach */
+.card h2,
+.card h3,
+.card p,
+.card ul,
+.card li {
+  grid-column: 2;
+  padding: 0 2rem;
+}
+
+.card h2:first-of-type {
+  grid-column: 2;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.card h3:first-of-type {
+  grid-column: 2;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Utwórz przestrzeń dla zdjęć z lewej strony */
+.card::before {
+  content: '';
+  grid-column: 1;
+  grid-row: 1 / -1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  min-height: 400px;
+}
+
+/* Pierwszy panel */
+/* Pierwszy panel */
+.card:nth-child(1)::before {
+  background-image: url('chickenfriedrice-9.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Drugi panel */
+.card:nth-child(3)::before {
+  background-image: url('chicken2.webp');
+  float:left;
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* Trzeci panel */
+.card:nth-child(5)::before {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+}
+
+/* Czwarty panel */
+.card:nth-child(7)::before {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .card h2,
+  .card h3,
+  .card p,
+  .card ul {
+    grid-column: 1;
+    padding: 0;
+  }
+
+  .card::before {
+    grid-column: 1;
+    grid-row: 1;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    gap: 0;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .card h2,
+  .card h3,
+  .card p,
+  .card ul {
+    grid-column: 1;
+    padding: 0;
+    margin: 0.5em 0;
+  }
+
+  .card::before {
+    min-height: 250px;
+    margin-bottom: 1rem;
+  }
+
+  nav {
+    gap: 1em;
+    font-size: 0.9rem;
+  }
+
+  main, header, footer {
+    padding: 1.5rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+

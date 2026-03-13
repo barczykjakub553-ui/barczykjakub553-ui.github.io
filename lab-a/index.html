@@ -3,11 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Imie Nazwisko (00000) - PTW LAB A</title>
+    <title>Jakub Barczyk (57722) - PTW LAB A</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <script src="//wi.arturk.pl/zen-style.js.php?styles[]=style-1&styles[]=style-2" defer></script>
+
+    <link rel="stylesheet" href="style-1.css">
+    <!--<script src="//wi.arturk.pl/zen-style.js.php?styles[]=style-1&styles[]=style-2" defer></script> -->
 </head>
 <body>
+    <nav>
+        <a href="#" class="active">Blog</a>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle">Kategorie</a>
+            <div class="categories">
+                <a href="#">Bez glutenu</a>
+                <a href="#">Daily Food Diary</a>
+                <a href="#">Desery</a>
+                <a href="#">Kolacja</a>
+                <a href="#">Mapa kulinarna</a>
+                <a href="#">Obiad</a>
+                <a href="#">Podróże</a>
+                <a href="#">Przekąski</a>
+                <a href="#">Śniadanie</a>
+            </div>
+        </div>
+        <a href="#" id="style-switcher">Styl</a>
+        <a href="#">Kontakt</a>
+    </nav>
+    <script>
+    // Przełączanie stylów style-1.css <-> style-2.css
+    document.addEventListener('DOMContentLoaded', function() {
+        const switcher = document.getElementById('style-switcher');
+        const link = document.querySelector('link[rel="stylesheet"][href*="style-"]');
+        let current = link.getAttribute('href');
+        switcher.addEventListener('click', function(e) {
+            e.preventDefault();
+            if(current === 'style-1.css') {
+                link.setAttribute('href', 'style-2.css');
+                current = 'style-2.css';
+                switcher.textContent = 'Styl 1';
+            } else {
+                link.setAttribute('href', 'style-1.css');
+                current = 'style-1.css';
+                switcher.textContent = 'Styl';
+            }
+        });
+    });
+    </script>
+    <div class="chicken-container">
+        <div class="main-image-container">
+            <img src="chickenfriedrice-9.webp" alt="Chicken Fried Rice" />
+        </div>
+        <div class="main-image-container">
+            <img src="chicken2.webp"/>
+        </div>
+    </div>
 
+    <main>
+        <section>
+            <div class="card">
+                <h2>Wprowadzenie</h2>
+                <p>Bear claw dessert chocolate bar croissant wafer sweet dragée lemon drops. Danish chupa chups bear claw fruitcake brownie bear claw ice cream. Chocolate biscuit marshmallow chocolate sesame snaps sweet roll brownie toffee cookie. Marzipan jelly pie cupcake chupa chups cake pudding. Jelly cupcake gummies sweet roll tart apple pie. Liquorice powder sweet roll topping gummies. Bear claw chocolate cake chocolate bar gummies ice cream cake. Toffee caramels jelly chocolate gummi bears. Cupcake biscuit gummies danish pastry jelly beans chocolate bar. Chocolate bar cotton candy pastry jelly beans marshmallow. Donut lollipop marshmallow sugar plum chocolate soufflé sweet roll cupcake tiramisu. Cheesecake jelly-o oat cake gingerbread lollipop gingerbread powder. Cookie cake sugar plum marshmallow jelly ice cream. Ice cream gingerbread brownie marshmallow jujubes sesame snaps.</p>
+            </div>
+            <div class="card">
+                <h3>Podsekcja 1</h3>
+                <p>Gummi bears dragée chupa chups ice cream tootsie roll tart dessert. Chocolate bar caramels gummi bears pudding macaroon powder. Pudding tootsie roll sweet lemon drops apple pie cake cake. Toffee sweet roll chocolate apple pie marshmallow sweet. Dessert toffee dragée chocolate cake sweet roll gingerbread carrot cake. Fruitcake cupcake bonbon wafer cake tootsie roll fruitcake. Lollipop chupa chups icing tart marzipan bonbon fruitcake cheesecake. Sesame snaps toffee muffin lemon drops jelly. Tiramisu caramels apple pie liquorice marzipan macaroon. Donut lollipop croissant dragée macaroon gingerbread gummi bears shortbread halvah. Marshmallow danish cake carrot cake brownie icing jelly-o. Ice cream sesame snaps caramels dragée pastry gummi bears macaroon candy.</p>
+                <p>Bonbon topping bear claw shortbread fruitcake tootsie roll gummi bears muffin marshmallow. Pie topping topping sweet bonbon marzipan chocolate jelly beans chocolate cake. Marshmallow tootsie roll cookie danish chocolate bar chocolate cake marshmallow tootsie roll. Sweet roll sugar plum bear claw topping dragée chocolate bar cookie tootsie roll chocolate. Bonbon cotton candy apple pie jelly-o ice cream. Bear claw wafer candy toffee tart powder jelly-o brownie. Macaroon bonbon jelly soufflé donut. Sweet cake pie oat cake muffin pudding cheesecake pastry apple pie. Jelly-o lollipop marzipan tiramisu macaroon bonbon pie chocolate bar. Soufflé wafer gummies gummi bears donut caramels chupa chups bear claw. Cheesecake topping topping topping sugar plum brownie. Pudding gummi bears biscuit cake cheesecake marzipan halvah cupcake topping. Candy canes croissant candy canes candy canes sesame snaps toffee croissant brownie. Cheesecake danish cupcake sesame snaps halvah.</p>
+            </div>
+            <div class="card">
+                <h2>Rozdział drugi</h2>
+                <p>Bear claw candy dessert chocolate bar sweet danish pie topping sesame snaps. Dessert marzipan fruitcake jujubes powder. Sugar plum cheesecake cotton candy biscuit toffee chocolate. Pastry sesame snaps halvah apple pie wafer gingerbread. Brownie jelly-o soufflé carrot cake sweet roll macaroon marzipan. Powder icing chocolate bar sesame snaps muffin jujubes jelly brownie. Dessert cheesecake jelly-o cake shortbread cake cheesecake sesame snaps gingerbread. Biscuit apple pie ice cream bear claw dragée gummies shortbread icing. Danish oat cake lemon drops jelly beans jujubes sesame snaps pastry jelly-o sweet. Icing wafer cake powder gummies jelly cotton candy marshmallow. Cotton candy tart gingerbread toffee cheesecake cookie marzipan oat cake halvah. Apple pie tiramisu jelly-o liquorice pudding macaroon muffin toffee marshmallow. Jelly beans donut chocolate bar cookie jelly-o bonbon. Gummies chupa chups shortbread pastry gingerbread danish chocolate cake.</p>
+            </div>
+            <div class="card">
+                <h3>Podsekcja 2</h3>
+                <p>Carrot cake chocolate bar cupcake liquorice jelly chocolate bar. Biscuit liquorice croissant lemon drops pie liquorice cake cupcake liquorice. Tart sweet liquorice dessert dragée sweet. Cookie gummi bears liquorice icing toffee tiramisu bonbon. Tart lemon drops lollipop icing cake. Cookie cookie cake oat cake macaroon chocolate cake jujubes sesame snaps. Brownie biscuit halvah caramels toffee gummi bears. Jelly beans ice cream soufflé cotton candy macaroon jujubes marshmallow bonbon dessert. Muffin gummi bears gummies cheesecake cookie cookie powder danish cake. Pastry gummi bears sweet halvah pastry sweet. Cotton candy pastry pie pie jelly beans. Halvah jelly marshmallow chocolate powder cake liquorice.</p>
+                <p>Lollipop gummies sweet roll dessert apple pie marzipan croissant. Pie cake gingerbread tootsie roll cake tootsie roll marshmallow tiramisu. Ice cream toffee ice cream shortbread liquorice dragée caramels sesame snaps. Halvah biscuit jujubes jelly dessert. Jelly-o pie candy canes chocolate bar lollipop. Sesame snaps donut gummi bears liquorice marshmallow pastry icing. Oat cake brownie apple pie marshmallow bear claw. Liquorice marshmallow jujubes brownie chupa chups. Biscuit macaroon gummi bears bonbon bonbon ice cream tart. Pastry cupcake dragée powder carrot cake pie liquorice. Macaroon sweet roll muffin cupcake dragée topping cake powder dessert. Halvah tootsie roll danish candy canes jujubes. Toffee caramels candy canes sweet gingerbread. Toffee gummies dessert soufflé bear claw soufflé cake danish sweet.</p>
+                <ul>
+                    <li>Pierwszy element listy</li>
+                    <li>Drugi element listy</li>
+                    <li>Trzeci element listy</li>
+                </ul>
+                <p>Shortbread sweet marshmallow wafer sesame snaps. Pudding fruitcake gummies dessert apple pie chocolate cake topping dessert powder. Halvah gummi bears brownie topping carrot cake sugar plum gummi bears sugar plum. Cake shortbread tart candy canes cheesecake caramels. Jelly beans tart sugar plum ice cream lemon drops. Liquorice icing powder gummies caramels jelly-o croissant chocolate marzipan. Caramels tootsie roll marshmallow muffin sweet shortbread jujubes. Danish cupcake muffin chupa chups pie jujubes jelly beans biscuit candy. Danish cotton candy candy canes candy soufflé liquorice. Carrot cake gummi bears tootsie roll dessert croissant fruitcake. Jujubes jujubes donut chupa chups tart toffee carrot cake marshmallow. Ice cream wafer powder wafer tootsie roll croissant pie carrot cake pastry.</p>
+            </div>
+            <div class="card">
+                <h2>Rozdział trzeci</h2>
+                <p>Tootsie roll bonbon brownie donut lemon drops lollipop tootsie roll biscuit jelly-o. Candy chocolate cake macaroon muffin pie apple pie dessert lemon drops. Pudding macaroon cupcake lollipop pastry donut. Topping halvah cotton candy sweet roll cupcake. Marzipan halvah muffin cookie dessert dragée. Cookie chocolate cake cupcake cake jelly-o. Shortbread tart tootsie roll pudding tart apple pie chocolate cake oat cake. Pudding chocolate powder wafer lollipop cookie tart. Gummi bears tart pie danish caramels caramels. Caramels fruitcake cupcake sugar plum dessert danish. Bear claw brownie toffee cotton candy tootsie roll gummi bears oat cake gummi bears dessert. Jelly-o biscuit marshmallow marshmallow muffin oat cake carrot cake candy candy.</p>
+            </div>
+            <div class="card">
+                <h3>Podsekcja 3</h3>
+                <p>Sugar plum toffee cookie icing pudding. Liquorice gingerbread muffin sugar plum sweet sweet biscuit. Cake toffee chupa chups candy candy soufflé halvah. Pie cheesecake bonbon dragée bear claw. Jelly dragée icing pudding jelly-o. Lollipop oat cake apple pie icing pudding fruitcake cotton candy. Bear claw tiramisu cheesecake sugar plum liquorice carrot cake. Cotton candy dragée biscuit dessert soufflé. Cheesecake fruitcake brownie soufflé sweet sugar plum bear claw ice cream cupcake. Shortbread donut sesame snaps jelly beans lemon drops. Sweet roll pie pie marshmallow tootsie roll. Caramels fruitcake cheesecake dessert dessert candy canes dessert pastry. Gingerbread powder fruitcake tootsie roll chocolate.</p>
+                <p>Chocolate bar caramels lollipop gingerbread tiramisu marzipan bear claw croissant chocolate cake. Marshmallow tart pastry jujubes pastry cheesecake croissant bonbon chupa chups. Donut topping muffin chocolate carrot cake oat cake gummies. Lollipop tiramisu marshmallow gingerbread sugar plum. Carrot cake chupa chups candy canes lollipop gummies. Cake apple pie donut chocolate bar gingerbread pastry. Lemon drops chocolate cake cake pastry jelly beans macaroon bonbon marzipan. Chocolate bar bear claw macaroon topping cotton candy bonbon cheesecake ice cream. Cookie donut tootsie roll sweet roll lemon drops pie tiramisu tart. Jelly beans bonbon croissant gummies pie fruitcake candy. Bonbon jujubes caramels danish sweet roll tart soufflé cake. Shortbread liquorice shortbread sesame snaps dragée chupa chups cookie.</p>
+                <p>Apple pie wafer pastry tootsie roll gummies. Biscuit halvah sesame snaps croissant caramels donut chocolate lollipop jujubes. Cotton candy chocolate carrot cake cupcake dessert pastry bonbon sugar plum. Jelly-o shortbread chupa chups donut cake cheesecake brownie. Chocolate bar marshmallow bear claw cheesecake cheesecake caramels lemon drops sweet roll. Ice cream croissant fruitcake carrot cake lollipop powder toffee ice cream. Soufflé muffin cheesecake danish bear claw lollipop toffee. Soufflé sweet sweet roll sugar plum chupa chups pie sesame snaps chocolate bar. Ice cream bear claw tootsie roll marshmallow sesame snaps wafer wafer dessert. Gummies sesame snaps cheesecake jelly-o chupa chups. Oat cake dessert muffin sesame snaps fruitcake cake marshmallow. Cotton candy chupa chups cake cake bonbon pudding. Lollipop chupa chups cake chocolate bar donut. Jelly-o gummies soufflé oat cake pudding cotton candy dessert jujubes.</p>
+                <p>Sweet roll lollipop pudding gummi bears bonbon muffin tootsie roll. Candy lemon drops fruitcake pie tiramisu powder. Pastry marzipan toffee gummies sugar plum jujubes. Gingerbread chocolate bar pudding jelly-o wafer. Marzipan jelly beans chupa chups ice cream tart. Pastry fruitcake lollipop caramels powder bear claw soufflé. Muffin fruitcake candy shortbread bear claw. Halvah powder jujubes danish topping jelly macaroon cake. Pudding jelly beans brownie fruitcake carrot cake fruitcake sweet roll muffin. Pudding cookie caramels gingerbread jelly-o. Jelly beans macaroon cake sweet roll candy fruitcake cheesecake muffin. Macaroon chocolate sweet soufflé gummies sesame snaps apple pie. Sesame snaps cake pastry cookie chupa chups cupcake bear claw. Topping donut marzipan bear claw gingerbread caramels toffee jujubes.</p>
+                <p>Sugar plum candy canes candy canes bonbon marshmallow dragée gingerbread croissant. Sugar plum soufflé croissant cheesecake liquorice chupa chups sugar plum. Carrot cake candy caramels donut caramels pie brownie candy. Ice cream jelly beans lemon drops candy dessert. Wafer cheesecake shortbread halvah jelly beans ice cream cotton candy sugar plum. Croissant jelly tootsie roll macaroon sugar plum powder shortbread. Chocolate bar chocolate cake lemon drops sweet roll chocolate cake dessert. Muffin topping pie lemon drops halvah marshmallow oat cake tart pudding. Bear claw gingerbread brownie jelly-o jujubes danish muffin wafer. Jujubes candy liquorice wafer sweet jelly candy canes chocolate bar. Gummies chupa chups sesame snaps halvah halvah. Tart cookie biscuit cotton candy halvah. Topping cookie sweet gummies dragée gummi bears apple pie cookie bonbon. Brownie cookie cookie marshmallow tootsie roll shortbread.</p>
+                <p>Cheesecake caramels jelly-o donut macaroon pudding. Marshmallow cake marshmallow candy canes chocolate bar chupa chups ice cream icing jelly. Lollipop marshmallow cotton candy pudding apple pie cupcake wafer jelly beans. Wafer ice cream macaroon icing cotton candy. Jelly beans sugar plum dragée cotton candy danish. Cake gummi bears cookie croissant cheesecake ice cream bonbon cookie. Gummies lollipop wafer marzipan apple pie halvah dragée toffee. Cotton candy lemon drops tart gummi bears cake carrot cake tootsie roll donut danish. Tootsie roll apple pie pie dragée pie caramels. Powder jelly-o bear claw cake tiramisu oat cake bonbon candy canes. Cupcake donut biscuit icing dragée chupa chups carrot cake. Powder donut tiramisu chocolate bar cookie pastry candy canes brownie. Icing halvah halvah soufflé jelly cotton candy chocolate candy brownie. Pie sugar plum cookie sugar plum caramels.</p>
+                <p>Wafer ice cream candy canes muffin lollipop jujubes macaroon liquorice. Liquorice cheesecake dragée jelly-o bonbon. Bonbon marshmallow jelly croissant lemon drops biscuit. Chupa chups wafer tootsie roll cupcake sugar plum candy shortbread tart wafer. Ice cream caramels macaroon toffee wafer. Sesame snaps bonbon candy donut powder chupa chups tart cotton candy sweet roll. Cake cotton candy cupcake cupcake cotton candy jelly-o lollipop. Jelly soufflé cheesecake jelly jelly-o caramels marzipan. Dessert tootsie roll pudding oat cake tiramisu marzipan croissant cheesecake. Sweet roll tart tootsie roll brownie jelly. Jelly macaroon marzipan apple pie chocolate bar fruitcake halvah. Cotton candy chocolate cupcake liquorice ice cream jelly-o lemon drops caramels danish. Sweet marzipan marshmallow donut tart powder pastry croissant. Apple pie ice cream sugar plum icing oat cake carrot cake jelly-o tart.</p>
+            </div>
+        </section>
+    </main>
+    <div class="main-image-container">
+        <img src="chicken2.webp" alt="Chicken Fried Rice" />
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Jakub Barczyk. Wszystkie prawa zastrzeżone.</p>
+    </footer>
 </body>
 </html>
