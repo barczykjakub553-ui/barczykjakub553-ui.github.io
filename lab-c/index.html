@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Imie Nazwisko (00000) - PTW LAB C</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin="">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-image/leaflet-image.js"></script>
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+<main class="container">
+    <h1>Lab C - Układanka mapy (4x4)</h1>
+
+    <section class="controls">
+        <button id="locateBtn" type="button">Pobierz lokalizację i utwórz układankę</button>
+        <button id="checkBtn" type="button">Sprawdź ułożenie</button>
+        <button id="resetBtn" type="button">Nowa losowa kolejność</button>
+    </section>
+
+    <section class="map-section">
+        <h2>Mapa (Leaflet)</h2>
+        <div id="map" aria-label="Mapa lokalizacji użytkownika"></div>
+    </section>
+
+    <section class="game-section">
+        <h2>Układanka</h2>
+
+        <div class="board-wrapper">
+            <div class="label">Plansza 4x4 (tu ułóż kafelki):</div>
+            <div id="board" class="grid board" aria-label="Plansza układanki"></div>
+        </div>
+
+        <div class="tray-wrapper">
+            <div class="label">Kafelki (przeciągaj na planszę):</div>
+            <div id="tray" class="grid tray" aria-label="Zasobnik kafelków"></div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Powiadomienia</h2>
+        <div id="notifications" class="notifications" aria-live="polite"></div>
+    </section>
+</main>
+</body>
+</html>
