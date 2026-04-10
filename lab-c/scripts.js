@@ -1,306 +1,130 @@
-let map = null;
-let marker = null;
-let currentTiles = [];
+let podpowiedz = true;
 
-const GRID_SIZE = 4;
-const TILE_SIZE = 96;
-const IMAGE_SIZE = GRID_SIZE * TILE_SIZE;
+const GRID = 4, TILE = 96, SIZE = GRID * TILE;
+let map, marker, tiles = [];
+const board = document.getElementById("board"), tray = document.getElementById("tray");
+const notify = (t, ty = "info") => {
+  const d = document.createElement("div");
+  d.className = `notice ${ty}`; d.textContent = t;
+  document.getElementById("notifications").prepend(d);
+};
 
-const locateBtn = document.getElementById("locateBtn");
-const checkBtn = document.getElementById("checkBtn");
-const resetBtn = document.getElementById("resetBtn");
-const board = document.getElementById("board");
-const tray = document.getElementById("tray");
-const notifications = document.getElementById("notifications");
+document.getElementById("locateBtn").onclick = () => { //pobierz lokalizacje
+  if (!navigator.geolocation) return;
+  navigator.geolocation.getCurrentPosition(async pos => {
+    const { latitude: lat, longitude: lon } = pos.coords;
+    if (!map) {
+      map = L.map("map").setView([lat, lon], 13);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19 }).addTo(map);
+    } else map.setView([lat, lon], 13);
+    marker ? marker.setLatLng([lat, lon]) : marker = L.marker([lat, lon]).addTo(map).bindPopup("Twoja lokalizacja").openPopup();
+    const img = await getMapImg();
+    tiles = await sliceImg(img);
+    render();
+  }, e => notify("Błąd geolokalizacji", "error"));
+};
 
-locateBtn.addEventListener("click", handleLocateClick);
-checkBtn.addEventListener("click", checkWin);
-resetBtn.addEventListener("click", reshuffle);
 
-initDropContainers();
-
-function notify(text, type = "info") {
-  const item = document.createElement("div");
-  item.className = `notice ${type}`;
-  item.textContent = text;
-  notifications.prepend(item);
-}
-
-function initMap(lat, lon) {
-  if (!map) {
-    map = L.map("map", {
-      zoomControl: true,
-      attributionControl: true
-    }).setView([lat, lon], 13);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution: "&copy; OpenStreetMap contributors"
-    }).addTo(map);
-  } else {
-    map.setView([lat, lon], 13);
-  }
-
-  if (marker) {
-    marker.setLatLng([lat, lon]);
-  } else {
-    marker = L.marker([lat, lon]).addTo(map);
-  }
-
-  marker.bindPopup("Twoja lokalizacja").openPopup();
-}
-
-async function handleLocateClick() {
-  if (!("geolocation" in navigator)) {
-    notify("Twoja przeglądarka nie obsługuje Geolocation API.", "error");
+document.getElementById("checkBtn").onclick = () => { //sprawdz ulozenie
+  const slots = board.querySelectorAll(".slot");
+  if ([...slots].some(s => !s.firstElementChild)) {
+    notify('Uzupelnij pola. ', 'error');
     return;
   }
+  if ([...slots].every((s, i) => s.firstElementChild.dataset.idx == i)) notify("Brawo!", "success");
+  else notify("Spróbuj dalej.", "info");
+};
 
-  notify("Pobieram lokalizację...", "info");
+document.getElementById("resetBtn").onclick = () => {
+  if (!tiles.length) return notify("Najpierw wygeneruj układankę.", "info");
+  render();
+  notify("Przetasowano.", "info");
+};
 
-  navigator.geolocation.getCurrentPosition(
-    async (position) => {
-      const { latitude, longitude } = position.coords;
+document.getElementById("custMap").onclick = async () => {
+  if (!map) return;
+  const img = await getMapImg();
+  tiles = await sliceImg(img);
+  render();
+  notify("Układanka z widoku mapy.", "success");
+};
 
-      initMap(latitude, longitude);
-      notify(`Lokalizacja OK: ${latitude.toFixed(5)}, ${longitude.toFixed(5)}`, "success");
-
-      try {
-        notify("Generuję obraz mapy do układanki...", "info");
-        const mapImageDataUrl = await getLeafletMapImage();
-        const tiles = await sliceImageToTiles(mapImageDataUrl, GRID_SIZE);
-        currentTiles = tiles;
-        renderPuzzle(tiles);
-        notify("Układanka gotowa. Przeciągnij kafelki na planszę.", "success");
-      } catch (err) {
-        notify(`Nie udało się przygotować układanki: ${err.message}`, "error");
-      }
-    },
-    (error) => {
-      const reason = geolocationErrorToText(error);
-      notify(`Błąd geolokalizacji: ${reason}`, "error");
-    },
-    {
-      enableHighAccuracy: true,
-      timeout: 10000,
-      maximumAge: 0
-    }
-  );
-}
-
-function geolocationErrorToText(error) {
-  switch (error.code) {
-    case error.PERMISSION_DENIED:
-      return "brak zgody użytkownika";
-    case error.POSITION_UNAVAILABLE:
-      return "pozycja niedostępna";
-    case error.TIMEOUT:
-      return "przekroczono czas oczekiwania";
-    default:
-      return "nieznany problem";
-  }
-}
-
-// Zwraca dataURL z aktualnego widoku mapy Leaflet (z markerem)
-function getLeafletMapImage() {
-  return new Promise((resolve, reject) => {
-    if (!map) {
-      reject(new Error("Mapa nie jest zainicjalizowana."));
-      return;
-    }
-    // Ustaw rozmiar mapy na IMAGE_SIZE x IMAGE_SIZE na czas renderowania
-    const mapDiv = document.getElementById("map");
-    const prevWidth = mapDiv.style.width;
-    const prevHeight = mapDiv.style.height;
-    mapDiv.style.width = IMAGE_SIZE + "px";
-    mapDiv.style.height = IMAGE_SIZE + "px";
+function getMapImg() {
+  return new Promise(res => {
+    const m = document.getElementById("map");
+    const w = m.style.width, h = m.style.height;
+    m.style.width = m.style.height = SIZE + "px";
     map.invalidateSize();
-
-    // leafletImage renderuje mapę do canvas
-    leafletImage(map, function(err, canvas) {
-      // Przywróć rozmiar mapy
-      mapDiv.style.width = prevWidth;
-      mapDiv.style.height = prevHeight;
-      map.invalidateSize();
-
-      if (err) {
-        reject(new Error("Nie udało się wygenerować obrazu mapy."));
-        return;
-      }
-      try {
-        const dataUrl = canvas.toDataURL("image/png");
-        resolve(dataUrl);
-      } catch (e) {
-        reject(new Error("Nie udało się pobrać obrazu z canvas."));
-      }
+    leafletImage(map, (err, c) => {
+      m.style.width = w; m.style.height = h; map.invalidateSize();
+      res(c.toDataURL("image/png"));
     });
   });
 }
 
-function sliceImageToTiles(imageDataUrl, gridSize) {
-  return new Promise((resolve, reject) => {
+function sliceImg(url) {
+  return new Promise(res => { //promise bo inaczej strona bedzie oczekiwala na wykonanie i bedzie nie responsywna
     const img = new Image();
     img.onload = () => {
-      try {
-        const tileWidth = Math.floor(img.width / gridSize);
-        const tileHeight = Math.floor(img.height / gridSize);
-        const tiles = [];
-
-        for (let row = 0; row < gridSize; row++) {
-          for (let col = 0; col < gridSize; col++) {
-            const index = row * gridSize + col;
-
-            const tileCanvas = document.createElement("canvas");
-            tileCanvas.width = tileWidth;
-            tileCanvas.height = tileHeight;
-
-            const tileCtx = tileCanvas.getContext("2d");
-            tileCtx.drawImage(
-              img,
-              col * tileWidth,
-              row * tileHeight,
-              tileWidth,
-              tileHeight,
-              0,
-              0,
-              tileWidth,
-              tileHeight
-            );
-
-            tiles.push({
-              correctIndex: index,
-              dataUrl: tileCanvas.toDataURL("image/png")
-            });
-          }
+      const arr = [];
+      for (let r = 0; r < GRID; r++)
+        for (let c = 0; c < GRID; c++) {
+          const cv = document.createElement("canvas");
+          cv.width = cv.height = TILE;
+          cv.getContext("2d").drawImage(img, c * TILE, r * TILE, TILE, TILE, 0, 0, TILE, TILE);
+          arr.push({ idx: r * GRID + c, url: cv.toDataURL("image/png") });
         }
-
-        resolve(tiles);
-      } catch (e) {
-        reject(new Error("Obraz wczytany, ale nie da się go pociąć (canvas)."));
-      }
+      res(arr);
     };
-    img.onerror = () => reject(new Error("Nie można wczytać obrazu mapy z canvas."));
-    img.src = imageDataUrl;
+    img.src = url;
   });
 }
 
-function renderPuzzle(tiles) {
-  board.innerHTML = "";
-  tray.innerHTML = "";
-
-  for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
-    board.appendChild(createSlot(i, "board"));
-    tray.appendChild(createSlot(i, "tray"));
+function render() {
+  board.innerHTML = tray.innerHTML = "";
+  for (let i = 0; i < GRID * GRID; i++) {
+    const s1 = slot(i), s2 = slot(i);
+    board.appendChild(s1); tray.appendChild(s2);
   }
-
-  const shuffled = shuffle([...tiles]);
-
-  shuffled.forEach((tileObj, i) => {
-    const tileEl = createTileElement(tileObj.correctIndex, tileObj.dataUrl);
-    const traySlot = tray.querySelector(`.slot[data-slot-index="${i}"]`);
-    traySlot.appendChild(tileEl);
+  shuffle([...tiles]).forEach((t, i) => {
+    const el = tile(t.idx, t.url);
+    tray.querySelectorAll(".slot")[i].appendChild(el);
   });
 }
 
-function createSlot(index, zone) {
-  const slot = document.createElement("div");
-  slot.className = "slot";
-  slot.dataset.slotIndex = String(index);
-  slot.dataset.zone = zone;
-
-  slot.addEventListener("dragover", (e) => {
+function slot(i) {
+  const d = document.createElement("div");
+  d.className = "slot"; d.dataset.idx = i;
+  d.ondragover = e => e.preventDefault();
+  d.ondrop = e => {
     e.preventDefault();
-    slot.classList.add("over");
-  });
-
-  slot.addEventListener("dragleave", () => {
-    slot.classList.remove("over");
-  });
-
-  slot.addEventListener("drop", (e) => {
-    e.preventDefault();
-    slot.classList.remove("over");
-
-    const tileId = e.dataTransfer.getData("text/plain");
-    if (!tileId) return;
-
-    const dragged = document.getElementById(tileId);
-    if (!dragged) return;
-
-    if (slot.firstElementChild) {
-      const fromSlot = dragged.parentElement;
-      fromSlot.appendChild(slot.firstElementChild);
-    }
-
-    slot.appendChild(dragged);
-  });
-
-  return slot;
+    const id = e.dataTransfer.getData("text/plain");
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (d.firstElementChild) d.parentElement.appendChild(d.firstElementChild);
+    d.appendChild(el);
+  };
+  return d;
 }
 
-function createTileElement(correctIndex, dataUrl) {
-  const tile = document.createElement("div");
-  tile.id = `tile-${crypto.randomUUID()}`;
-  tile.className = "tile";
-  tile.draggable = true;
-  tile.dataset.correctIndex = String(correctIndex);
-  tile.style.backgroundImage = `url("${dataUrl}")`;
-
-  tile.addEventListener("dragstart", (e) => {
-    e.dataTransfer.setData("text/plain", tile.id);
-  });
-
-  return tile;
-}
-
-function initDropContainers() {
-  [board, tray].forEach((container) => {
-    container.addEventListener("dragover", (e) => e.preventDefault());
-  });
-}
-
-function checkWin() {
-  const boardSlots = board.querySelectorAll(".slot");
-  let allFilled = true;
-  let allCorrect = true;
-
-  boardSlots.forEach((slot) => {
-    const tile = slot.firstElementChild;
-    if (!tile) {
-      allFilled = false;
-      allCorrect = false;
-      return;
-    }
-
-    if (tile.dataset.correctIndex !== slot.dataset.slotIndex) {
-      allCorrect = false;
-    }
-  });
-
-  if (!allFilled) {
-    notify("Najpierw umieść wszystkie 16 kafelków na planszy.", "info");
-    return;
+function tile(idx, url) { //tworzy kafelek na podstawie obrazu, jezeli globalna podpowiedz jest wlaczona to pokazuje kolejnosc w title
+  const d = document.createElement("div");
+  d.id = "tile-" + Math.random();
+  d.className = "tile";
+  d.draggable = true;
+  d.dataset.idx = idx;
+  d.style.backgroundImage = `url("${url}")`;
+  if (podpowiedz) {
+    d.title = `Kafelek ${idx + 1}`;
   }
-
-  if (allCorrect) {
-    notify("Brawo! Układanka ułożona poprawnie.", "success");
-  } else {
-    notify("Jeszcze niepoprawnie. Spróbuj dalej.", "info");
-  }
+  d.ondragstart = e => e.dataTransfer.setData("text/plain", d.id);
+  return d;
 }
 
-function reshuffle() {
-  if (!currentTiles.length) {
-    notify("Najpierw wygeneruj układankę z lokalizacji.", "info");
-    return;
-  }
-  renderPuzzle(currentTiles);
-  notify("Kafelki przetasowane.", "info");
-}
-
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+    [a[i], a[j]] = [a[j], a[i]];
   }
-  return arr;
+  return a;
 }
