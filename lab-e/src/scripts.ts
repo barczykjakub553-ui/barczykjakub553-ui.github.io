@@ -8,31 +8,24 @@ export function injectStyle(index: number): HTMLLinkElement {
 	return link;
 }
 
-export function injectLink(containerSelector?: string): HTMLElement {
-	const container = ((containerSelector ? document.querySelector(containerSelector) : null) as HTMLElement | null)
-		|| (document.getElementById('style-links') as HTMLElement | null)
-		|| (() => {
-			const el = document.createElement('div') as HTMLElement;
-			el.id = 'style-links';
-			document.body.appendChild(el);
-			return el;
-		})();
-	container.innerHTML = '';
+export function injectLink(): void {
+	const containers: (HTMLElement | null)[] = [
+		document.getElementById('link1'),
+		document.getElementById('link2'),
+		document.getElementById('link3')
+	];
 
-	styles.forEach((href, i) => {
-		const a = document.createElement('a');
-		a.href = '#';
-		a.textContent = href.split('/').pop() || href;
-		a.style.cursor = 'pointer';
-		a.style.marginRight = '8px'; //margines
-		a.addEventListener('click', (e) => {
-			e.preventDefault();
-			injectStyle(i);
-		});
-		container.appendChild(a);
-	});
-
-	return container;
+	containers.forEach((container, index) => {
+		if (container) {
+			container.textContent = styles[index].split('/').pop() || styles[index];
+			container.style.cursor = 'pointer';
+			container.style.marginRight = '8px';
+			container.addEventListener('click', (e) => {
+				e.preventDefault();
+				injectStyle(index);
+			});
+		}
+	})
 }
 
 injectLink();

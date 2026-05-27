@@ -18,6 +18,10 @@ main, header, footer {
   box-sizing: border-box; /* Uwzględnia padding w szerokości */
 }
 
+#link1, #link2, #link3 {
+  color: black;
+}
+
 img {
   border: #111111;
   max-width: 100%; /* Obrazy automatycznie dostosowują szerokość */
