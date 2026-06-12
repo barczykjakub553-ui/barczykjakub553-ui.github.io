@@ -1,0 +1,1064 @@
+Pages: 91
+--- PAGE 1 ---
+19.03.2026
+03
+JavaScript
+Podstawy
+Podstawy Technologii
+Webowych
+dr inż. Artur Karczmarczyk
+https://ispot.link/lista
+1
+--- PAGE 2 ---
+Agenda
+▪ Historia JavaScript
+▪ Podstawy programowania - przypomnienie
+▪ Podstawy JS - wartości, typy danych, operatory
+▪ Zmienne
+▪ Przepływ sterowania
+▪ Wyrażenia regularne
+▪ JS i przeglądarki
+19.03.2026 2
+--- PAGE 3 ---
+Literatura
+▪ Eloquent JavaScript – 4th Edition
+▪ Marjin Haverbeke
+▪ Listopad 2024
+▪ No Starch Press
+▪ 456 stron (11h 5m)
+▪ Poziom podstawowy do
+zaawansowanego
+▪ http://eloquentjavascript.net/
+19.03.2026 3
+--- PAGE 4 ---
+19.03.2026
+4
+Wprowadzenie
+do JavaScript
+--- PAGE 5 ---
+Historia JavaScript
+▪ Wprowadzony w 1995 do Netscape Navigator.
+▪ Umożliwienie dodawania interaktywnych programów do stron internetowych.
+▪ Wprowadzony do wszystkich pozostałych przeglądarek.
+▪ Brak powiązania pomiędzy Java i JavaScript.
+▪ Po wyjściu z Netscape – standaryzacja:
+▪ standard ECMAScript
+▪ opis jak język JS powinien działać / zostać zaimplementowany
+▪ ECMAScript 3:
+▪ grudzień 1999; dodane wyrażenia regularne, obsługa wyjątków try / catch
+▪ ECMAScript 4
+▪ dużo rozszerzeń i radykalne zmiany
+▪ porzucony w 2008 roku
+▪ ECMAScript 5
+▪ grudzień 2009
+▪ mniej ambitna, ale powszechnie używana wersja
+19.03.2026 5
+--- PAGE 6 ---
+Historia JavaScript
+▪ ECMAScript 6 → ES2015
+▪ czerwiec 2015
+▪ ECMAScript 7 → ES2016
+▪ czerwiec 2016
+▪ ECMAScript 8 →ES2017
+▪ czerwiec 2017
+▪ …
+▪ ES.Next
+▪ bieżąca wersja rozwojowa
+▪ propozycje funkcjonalności – standard jeszcze nie domknięty
+▪ Praktycznie pełne wsparcie ECMAScript 6 (ES2015) we wszystkich współczesnych przeglądarkach.
+▪ Uwaga na najnowsze nowsze wersje – caniuse.com
+19.03.2026 6
+--- PAGE 7 ---
+Zastosowanie JavaScript
+▪ Przeglądarki internetowe
+▪ asynchroniczne wczytywanie danych
+▪ dynamiczna modyfikacja stron
+▪ bez konieczności przeładowania strony
+▪ Bazy danych No-SQL:
+▪ MongoDB
+▪ JS jako język skryptowy i język zapytań.
+▪ Oprogramowanie serwerowe / desktopowe:
+▪ Node.js
+▪ ELECTRON JS
+▪ Atom, Visual Studio Code, …
+19.03.2026 7
+--- PAGE 8 ---
+Problematyczny język
+▪ JavaScript bardzo liberalny.
+▪ Bardzo mało ograniczeń kodu jaki można wprowadzić.
+▪ Nieoczekiwany wynik interpretacji wprowadzonego kodu ☺
+▪ Język nie wskazuje źródła błędów.
+▪ Ogromne możliwości dla zaawansowanych programistów.
+19.03.2026 8
+--- PAGE 9 ---
+19.03.2026
+9
+Podstawy
+Programowania
+Przypomnienie
+--- PAGE 10 ---
+Język programowania
+▪ Sposób przekazania komputerowi instrukcji za pomocą składni
+zrozumiałej również dla człowieka.
+▪ Służy jako środek pośredni do wygenerowania instrukcji zrozumiałych
+dla komputera:
+▪ instrukcje 0-1
+▪ poprzez interpretację
+▪ poprzez kompilację
+19.03.2026 10
+--- PAGE 11 ---
+Proces tłumaczenia
+▪ Student myśli:
+▪ Do sesji zostało 13 tygodni
+▪ Tłumaczenie:
+▪ Przypisz wartość „13” do zmiennej „weeksLeft”.
+▪ Język programowania:
+▪ weeksLeft = 13;
+▪ Przy uruchomieniu interpreter JS bierze wartość 13 i przypisuje ją do zmiennej
+weeksLeft.
+19.03.2026 11
+--- PAGE 12 ---
+Zmienne i stałe
+▪ Zmienna
+▪ identyfikator wskazujący na określoną informację w pamięci komputera
+▪ wartość, tablica, obiekt
+▪ w JS również funkcja!
+▪ łatwo zmienić zawartość zmiennej
+▪ Stała
+▪ identyfikator wskazujący na określoną informację w pamięci komputera
+▪ wartość nie ulega zmianie przez cały czas trwania programu
+▪ zastosowania:
+▪ wartości które nie powinny ulec zmianie
+▪ stałe matematyczne
+▪ parametry programu wykorzystywane w jego trakcie
+▪ unikanie „magic numbers”
+19.03.2026 12
+--- PAGE 13 ---
+Tablice
+▪ Struktura przechowująca wiele
+elementów jednocześnie.
+Students
+▪ Tablica students może
+przechowywać informacje o
+wszystkich studentach w grupie.
+Alice Bob Carol
+19.03.2026 13
+--- PAGE 14 ---
+Składnia i semantyka
+▪ Składnia (syntax):
+▪ gramatyka, składnia zdań.
+▪ Semantyka (semantics):
+▪ znaczenie zdań.
+▪ Przykład:
+▪ The 6-year-old child celebrated his job retirement after 25 years of service.
+▪ Moja wiecznie zapracowana Mama jutro sama usmaży nam placki.
+19.03.2026 14
+--- PAGE 15 ---
+Moja Wiecznie Zapracowana Mama Jutro Sama Usmaży Nam Placki
+https://upload.wikimedia.org/wikipedia/commons/a/a9/Planety2008.jpg
+19.03.2026 15
+--- PAGE 16 ---
+Przykłady składni
+Składnia Język
+if c then … Pascal
+if (c) … C, C#, C++, Java, JavaScript, PHP
+if c: … Python
+if (c) {} PHP
+… if c Perl, Ruby
+If c Then … Visual Basic
+19.03.2026 16
+--- PAGE 17 ---
+Symbole i słowa zastrzeżone
+▪ Znaki mające specjalne znaczenie symboliczne:
+▪ < > { } . ; ? ( ) / * ::
+▪ Słowa mające specjalne znaczenie:
+▪ switch
+▪ case
+▪ if
+▪ while
+▪ for
+19.03.2026 17
+--- PAGE 18 ---
+19.03.2026
+18
+Podstawy JS
+Wartości, typy danych, operatory
+--- PAGE 19 ---
+Typ Number
+▪ Wartości numeryczne.
+▪ Zapis:
+▪ 42
+▪ Stała wielkość w pamięci
+▪ 64 bity na pojedynczą wartość numeryczną w pamięci
+▪ Maksymalna wartość liczby całkowitej:
+▪ 9 biliardów
+▪ 9 quadrillion
+▪ 9 000 000 000 000 000 15 zer!
+19.03.2026 19
+--- PAGE 20 ---
+Ułamki
+▪ Część dziesiętna oddzielona z wykorzystaniem kropki:
+▪ 9.80665 umowna wartość przyśpieszenia ziemskiego
+▪ Notacja naukowa „e” (jak „exponent”):
+▪ 2.998e8 prędkość światła [m/s]
+8
+▪ 2.998 × 10 = 299,800,000
+▪ Obliczenia na liczbach zmiennoprzecinkowych nie do końca
+precyzyjne.
+19.03.2026 20
+--- PAGE 21 ---
+Wyzwanie
+▪ Ile razy wykona się poniższa pętla?
+let i = 0;
+while ( i !== 0.6 ) {
+console . log ( i );
+i += 0.2 ;
+}
+19.03.2026 21
+--- PAGE 22 ---
+Arytmetyka
+▪ Podstawowe operacje na liczbach jak w matematyce.
+▪ 1000 + 400 + 10 #1410bimber
+▪ Operatory matematyczne:
+▪ +, *, -, /, %
+▪ Specjalne wartości:
+▪ Infinity
+▪ -Infinity
+▪ Infinity – 1 to wciąż Infinity
+▪ NaN – not a number
+▪ 0/0
+▪ Infinity - Infinity
+19.03.2026 22
+--- PAGE 23 ---
+Typ string
+▪ Ciągi tekstowe zamknięte w:
+▪ ”cudzysłowie”
+▪ ’apostrofy’
+▪ `grawisy` odwrotny apostrof, a.k.a. template literals
+▪ Ciąg znakowy musi mieścić się w jednej linii lub być w `grawisach`
+▪ Znaki specjalne:
+▪ \n
+▪ \t
+▪ Wstawianie znaku \:
+▪ \\
+▪ Konkatenacja:
+▪ „foo” + „bar”
+19.03.2026 23
+--- PAGE 24 ---
+Interpolacja znaków
+▪ Tylko w grawisach.
+▪ Możliwość osadzenia innych wartości wewnątrz ciągu tekstowego.
+<script >
+let workhours = 8;
+let workdays = 21 ;
+console . log ( `A workmonth is usually ${ workdays *
+workhours } hours long .` );
+// > A workmonth is usually 168 hours long .
+</ script >
+19.03.2026 24
+--- PAGE 25 ---
+Operatory
+Arytmetyczne Przypisania
+▪ +a – identity ▪ a = ”…”
+▪ -a – negation ▪ a zostaje ustawione na wartość
+wyrażenia z prawej strony =
+▪ a + b – addition
+▪ a = (b = 4) + 5
+▪ a - b – subtraction
+▪ a * b – multiplication
+▪ a / b – division
+▪ a % b – modulo
+▪ a ** b – exponentation
+19.03.2026 25
+--- PAGE 26 ---
+Operatory
+Logiczne Porównania
+▪ ! a ▪ a == b – equal
+▪ a && b ▪ a === b – identical
+▪ a || b ▪ a != b – not equal
+▪ a !== b – not identical
+▪ a < b – less than
+▪ a > b – greater than
+▪ a <= b – less than or equal to
+▪ a >= b
+19.03.2026 26
+--- PAGE 27 ---
+Operatory
+Ciągi znakowe Bitowe
+▪ a = ”Hello ” + ”World!”; ▪ a & b – and
+▪ a | b – or
+▪ a ^ b – xor
+▪ ~ a – not
+▪ a << b – shift left
+▪ a >> b – shift right
+19.03.2026 27
+--- PAGE 28 ---
+Operatory
+▪ ++ a – pre-increment
+▪ a++ – post-increment
+▪ --a – pre-decrement
+▪ a-- – post-decrement
+19.03.2026 28
+--- PAGE 29 ---
+Operator i przypisanie
+▪ a += b
+▪ a -= b
+▪ a *= b
+▪ a /= b
+▪ a %= b
+19.03.2026 29
+--- PAGE 30 ---
+Operatory typeof
+▪ badanie typu zmiennej
+console . log ( typeof 3.14 );
+// > number
+console . log ( typeof " xyz " );
+// > string
+19.03.2026 30
+--- PAGE 31 ---
+Przykład: Operatory
+▪ operators.html
+▪ typeof.html
+▪ modulo.html
+19.03.2026 31
+--- PAGE 32 ---
+Wartości niezdefiniowane
+▪ null
+▪ undefined
+▪ Same w sobie są wartościami.
+▪ Przenoszą informację o braku wartości.
+▪ Generalnie mogą być używane naprzemiennie.
+19.03.2026 32
+--- PAGE 33 ---
+Typ Boolean
+console . log ( 3 > 0);
+console . log ( null == null );
+// > true // > true
+console . log ( 3 > 4); console . log ( null == undefined );
+// > true
+// > false
+console . log ( null === undefined );
+// > false
+console . log ( "Artur" > "Zorro" );
+// > false
+console . log ( Infinity ===
+console . log ( "Artur" < "Zorro" );
+Infinity );
+// > true
+// > true
+console . log ( "Artur" == "Artur" ); console . log ( NaN == NaN);
+// > true // > false
+console . log ( "Artur" != "Artur" );
+// > false
+19.03.2026 33
+--- PAGE 34 ---
+Operator ternary
+console . log ( true ? "a" : "b" );
+// > a
+console . log ( false ? "a" : "b" );
+// > b
+let isMember = false ;
+console . log ( "The fee is " + ( isMember ? 0 : 12 ) + " dollars " );
+// > The fee is 12 dollars
+isMember = true ;
+console . log ( "The fee is " + ( isMember ? 0 : 12 ) + " dollars " );
+// > The fee is 0 dollars
+// no brackets
+console . log ( "The fee is " + isMember ? 0 : 12 + " dollars " );
+// > 0
+19.03.2026 34
+--- PAGE 35 ---
+Automatyczna konwersja typów
+▪ Wykonywana automatycznie
+console . log ( 5 * null );
+przez JS przy operacjach na // > 0
+console . log ( "5" - 1);
+wartościach różnych typów.
+// > 4
+console . log ( "5" + 1);
+▪ JavaScript sam określa typ, do // > 51
+console . log ( 5 + "1" );
+którego skonwertować wartość. // > 51
+console . log ( 5 + parseInt ( "1" ));
+// > 6
+▪ „type coercion”
+console . log ( "five" * 5);
+// > NaN
+▪ Nieoczekiwane wyniki.
+console . log ( false == 0);
+// > true
+▪ Operator === wyłącza console . log ( false === 0);
+// > false
+automatyczną konwersję. console . log ( true == 1);
+// > true
+console . log ( true === 1);
+// > false
+19.03.2026 35
+--- PAGE 36 ---
+Specyficzne działanie || i &&
+▪ Występuje gdy wartości innego
+typu niż Boolean.
+▪ Konwersja lewej wartości na let user = null ;
+console . log ( user || " Anonymous " );
+Boolean.
+// > Anonymous
+▪ W zależności od wyniku zwrócenie
+console . log ( user && " Logged - in user " );
+lewej albo prawej wartości: // > null
+▪ || - lewa jak true, prawa jak false
+user = "Artur" ;
+▪ && - lewa jak false, prawa jak true.
+console . log ( user || " Anonymous " );
+▪ Zastosowanie: // > Artur
+console . log ( user && " Logged - in user " );
+▪ ustawianie domyślnych wartości;
+// > Logged - in user
+▪ ustawianie awaryjnych działań.
+19.03.2026 36
+--- PAGE 37 ---
+19.03.2026
+37
+Zmienne
+--- PAGE 38 ---
+Instrukcje
+▪ Zawarte w liniach, rozdzielane średnikami.
+▪ Możliwość pominięcia średników.
+▪ W instrukcji na ogół wyrażenia:
+▪ fragment kodu generujący wartość.
+▪ Instrukcje mogą wykonywać widoczne operacje lub zmieniać
+wewnętrzny stan programu – wpływać na dalszy przebieg.
+▪ Program zbudowany z kolejnych instrukcji.
+▪ Przykładowy program:
+▪ 42;
+▪ ! true;
+19.03.2026 38
+--- PAGE 39 ---
+Zmienne
+▪ ang. binding, variable
+▪ Przechowują wartości.
+let five = 5;
+▪ Brak konieczności wskazania typu. console . log ( five * five );
+// > 25
+▪ Konieczność deklaracji:
+console . log ( five / five );
+▪ var twentyFive;
+// > 1
+▪ let twentyFive;
+▪ Możliwość definicji:
+let value = five * five ;
+▪ let twentyFive = 5*5;
+console . log ( value );
+▪ Po zdefiniowaniu możliwość // > 25
+wykorzystania w wyrażeniach. value = value + five ;
+console . log ( value );
+▪ Możliwość przypisania innych
+// > 30
+wartości do zmiennej.
+19.03.2026 39
+--- PAGE 40 ---
+Interpretacja zmiennych
+▪ Zmienne w JavaScript należy interpretować jako wskaźniki na wartości
+/ obiekty, a nie jako pudełka z wartościami.
+19.03.2026 40
+http://eloquentjavascript.net/02_program_structure.html
+--- PAGE 41 ---
+Definiowanie kilku zmiennych jednocześnie
+let two = 2, three = 3;
+console . log ( two * three )
+// > 6
+19.03.2026 41
+--- PAGE 42 ---
+Słowa kluczowe i słowa zarezerwowane
+▪ break ▪ finally ▪ return
+▪ case ▪ for ▪ static
+▪ catch ▪ function ▪ super
+▪ class ▪ if ▪ switch
+▪ const ▪ implements ▪ this
+▪ continue ▪ import ▪ throw
+▪ debugger ▪ interface ▪ true
+▪ default ▪ in ▪ try
+▪ delete ▪ instanceof ▪ typeof
+▪ do ▪ let ▪ var
+▪ else ▪ new ▪ void
+▪ enum ▪ package ▪ while
+▪ export ▪ private ▪ with
+▪ extends ▪ protected ▪ yield
+▪ false ▪ public
+19.03.2026 42
+--- PAGE 43 ---
+Przydatne funkcje
+alert ( ' This is an alert’ );
+let confirmValue = confirm ( 'Do you agree ?’ );
+let promptValue = prompt ( "Tell me your name", "Zorro" );
+console . log ( confirmValue ? ' yes ' : 'no' , promptValue );
+// > yes Zorro
+19.03.2026 43
+--- PAGE 44 ---
+19.03.2026
+44
+Przepływ
+sterowania
+Control flow
+--- PAGE 45 ---
+Instrukcje warunkowe
+▪ if
+▪ if … else
+▪ if … else if … else
+▪ switch
+19.03.2026 45
+--- PAGE 46 ---
+IF
+let a = 10 , b = 20 ;
+if ( a > b) {
+console . log ( "A is greater than B" );
+}
+// > no output
+19.03.2026 46
+--- PAGE 47 ---
+IF … ELSE
+if ( a > b) {
+console . log ( "A is greater than B" );
+} else {
+console . log ( "A is lower than or equal to B" );
+}
+// > A is lower than or equal to B
+19.03.2026 47
+--- PAGE 48 ---
+IF … ELSE IF … ELSE
+if ( a > b) {
+console . log ( "A is greater than B" );
+} else if ( a < b) {
+console . log ( "A is lower than B" );
+} else {
+console . log ( "A is equal to B" );
+}
+// > A is lower than B
+19.03.2026 48
+--- PAGE 49 ---
+SWITCH
+switch ( a) {
+case 10 :
+console . log ( "A is 10" );
+break ;
+case 20 :
+console . log ( "A is 20" );
+break ;
+default :
+console . log ( "A has other value " );
+break ;
+}
+// > A is 10
+19.03.2026 49
+--- PAGE 50 ---
+Pętle
+▪ while
+▪ do … while
+▪ for
+▪ Przerywanie pętli:
+▪ break
+▪ continue
+19.03.2026 50
+--- PAGE 51 ---
+Pętla while
+let i = 5;
+while ( i <= 15 ) {
+console . log ( ` ${ i } ...` );
+i += 5;
+}
+19.03.2026 51
+--- PAGE 52 ---
+Pętla do … while
+let i = 5;
+let name;
+do {
+do {
+console . log ( ` ${ i } ...` ); name = prompt ( " What is your name?" );
+i += 5; } while (! name);
+console . log ( `The name is ${ name} ` );
+} while ( i <= 15 );
+19.03.2026 52
+--- PAGE 53 ---
+Pętla for
+for ( let i = 5; i <= 15 ; i += 5) {
+console . log ( ` ${ i } ...` );
+}
+19.03.2026 53
+--- PAGE 54 ---
+Pętla for-of
+const items = [ 5, 10 , 15 ];
+for ( let item of items ) {
+console . log ( ` ${ item } ...` );
+}
+19.03.2026 54
+--- PAGE 55 ---
+Wyzwanie
+Wykorzystać poznane pętle do narysowania trójkąta:
+#
+##
+###
+####
+#####
+…
+19.03.2026 55
+--- PAGE 56 ---
+19.03.2026
+56
+Funkcje
+--- PAGE 57 ---
+Funkcja jako zmienna
+const times = function (x, y) {
+return x * y;
+}
+console . log ( times ( 2, 3));
+// > 6
+19.03.2026 57
+--- PAGE 58 ---
+Zmienne lokalne i globalne
+let x = ' global ' ;
+const f1 = function () {
+let x = ' local 1' ;
+}
+f1 ();
+console . log ( x );
+// > global
+const f2 = function () {
+x = ' local 2' ;
+}
+f2 ();
+console . log ( x );
+// > local 2
+19.03.2026 58
+--- PAGE 59 ---
+Wiele poziomów lokalności – funkcje w funkcjach
+const box = function ( width , height ) {
+let result = "" ;
+const lid = function ( width ) {
+let result = "" ;
+for ( let i = 0; i < width ; i ++) {
+result += '#' ;
+}
+result += "\n";
+return result ;
+}
+const sides = function ( width , height ) {
+let result = "" ;
+for ( let h = 0; h < height - 2; h++) {
+for ( let w = 1; w <= width ; w++) {
+result += ( w == 1 || w == width ) ? '#' : '.' ;
+}
+result += "\n";
+}
+return result ;
+}
+result += lid ( width );
+result += sides ( width , height );
+result += lid ( width );
+return result ;
+}
+console . log ( box ( 8, 6));
+19.03.2026 59
+--- PAGE 60 ---
+Uwaga na bloki!
+var varThing = 1;
+let letThing = 1;
+{
+var varThing = 2;
+let letThing = 2;
+}
+console . log ( varThing , letThing );
+// > 2 1
+19.03.2026 60
+--- PAGE 61 ---
+Alternatywne deklaracje funkcji
+const f1 = function (param) {
+console . log ( `f1 ${param} ` );
+}
+f1 ( 1);
+// > f1 1
+function f2 (param) {
+console . log ( `f2 ${param} ` );
+}
+f2 ( 2);
+// > f2 2
+const f3 = (param) => {
+console . log ( `f3 ${param} ` );
+};
+f3 ( 3);
+// > f3 3
+19.03.2026 61
+--- PAGE 62 ---
+Parametry opcjonalne
+function power1 ( base , exponent ) { function power2 ( base , exponent = 2) {
+if ( exponent == undefined ) { let result = 1;
+exponent = 2; for ( let i = 0; i < exponent ; i ++) {
+} result *= base ;
+}
+let result = 1; return result ;
+for ( let i = 0; i < exponent ; i ++) { }
+result *= base ; console . log ( power1 ( 2));
+} // > 4
+return result ; console . log ( power1 ( 2, 3));
+} // > 8
+console . log ( power1 ( 2));
+// > 4
+console . log ( power1 ( 2, 3));
+// > 8
+19.03.2026 62
+--- PAGE 63 ---
+Rekurencja
+function power ( base , exponent = 0) {
+if ( exponent === 0) {
+return 1;
+} else {
+return base * power ( base , exponent - 1);
+}
+}
+console . log ( power ( 2, 0));
+// > 1
+console . log ( power ( 2, 3));
+// > 8
+19.03.2026 63
+--- PAGE 64 ---
+Wyzwanie
+▪ Ciąg Fibonacciego, omówiony w roku 1202 przez Leonarda z Pizy jako
+rozwiązanie zadania o rozmnażaniu się królików, opisany jest
+formalnie:
+0 𝑑𝑙𝑎 𝑛 = 0
+𝐹 = ቐ 1 𝑑𝑙𝑎 𝑛 = 1
+𝑛
+𝐹 + 𝐹 𝑑𝑙𝑎 𝑛 > 1
+𝑛−1 𝑛−2
+▪ Należy zaimplementować funkcję obliczającą kolejny element ciągu
+Fibonacciego z wykorzystaniem rekurencji.
+19.03.2026 64
+--- PAGE 65 ---
+19.03.2026
+65
+Wprowadzenie
+do struktur
+danych
+Tablice, podstawy obiektów.
+--- PAGE 66 ---
+Tablice
+const array = [ 'a' , 'b' , 'c' , 1, 2, 3];
+console . log ( array [ 0]);
+// > a
+console . log ( array [ 5]);
+// > 3
+19.03.2026 66
+--- PAGE 67 ---
+Właściwości
+const array = [ 'a' , 'b' , 'c' , 1, 2, 3];
+console . log ( array . length );
+console . log ( "abc" . length );
+console . log ( null . length );
+19.03.2026 67
+http://eloquentjavascript.net/04_data.html
+--- PAGE 68 ---
+Metody na ciągach znakowych
+let bam = "Bam" ;
+console . log ( typeof bam. toUpperCase );
+// > function
+console . log ( bam. toUpperCase ());
+// > BAM
+console . log ( bam. toLowerCase ());
+// > bam
+19.03.2026 68
+--- PAGE 69 ---
+Metody na tablicach
+let basket = [];
+basket . push ( " apple " );
+basket . push ( "banana" , " pear " );
+console . log ( basket );
+// > [" apple ", "banana", " pear "]
+console . log ( basket . join ( ", " ));
+// > apple , banana, pear
+console . log ( basket . pop ());
+// > pear
+console . log ( basket );
+// > [" apple ", "banana"]
+19.03.2026 69
+--- PAGE 70 ---
+Obiekty
+▪ Kolekcje właściwości i metod.
+let apple = {
+name: " apple " ,
+price : 3.99 ,
+};
+console . log ( apple . name, apple . price );
+// > apple 3.99
+apple . price = 4.99 ;
+console . log ( apple . name, apple . price );
+// > apple 4.99
+19.03.2026 70
+--- PAGE 71 ---
+Właściwości o złożonych nazwach
+let apple = {
+name: " apple " ,
+price : 3.99 ,
+" discount price " : 2.99 ,
+};
+console . log ( apple [ " discount price " ]);
+// > 2.99
+19.03.2026 71
+--- PAGE 72 ---
+Operatory unarne delete i in
+let apple = {
+▪ delete name: " apple " ,
+price : 3.99 ,
+▪ usuwa właściwość obiektu.
+" discount price " : 2.99 ,
+};
+▪ in
+console . log ( " price " in apple );
+▪ weryfikuje czy obiekt posiada
+// > true
+właściwość o zadanej nazwie;
+delete apple . price ;
+console . log ( " price " in apple );
+▪ zwraca wartość Boolean.
+// > false
+console . log ( apple . price );
+// > undefined
+console . log ( " discount price " in apple );
+// > true
+delete apple [ " discount price " ];
+console . log ( " discount price " in apple );
+// > false
+19.03.2026 72
+--- PAGE 73 ---
+Zmienność (mutability)
+▪ Podstawowe typy danych są
+let fruit1 = { name: "apple "};
+niezmienne (immutable)
+let fruit2 = fruit1 ;
+let fruit3 = { name: "apple "};
+▪ Number, String, Boolean
+▪ Można na nich operować, console . log ( fruit1 == fruit2 ,
+fruit1 == fruit3 ,
+wyprowadzać z nich nowe wartości.
+fruit2 == fruit3 );
+// > true false false
+▪ Nie da się zmienić samej wartości. console . log ( fruit1 . name, fruit2 . name, fruit3 . name);
+// > apple apple apple
+▪ W przypadku pojedynczego obiektu fruit1 . name = "pear ";
+console . log ( fruit1 . name, fruit2 . name, fruit3 . name);
+każdą właściwość można zmieniać
+// > pear pear apple
+wielokrotnie (mutable).
+▪ Przykład:
+▪ 120 === 120
+▪ fruit1 === fruit2 != fruit3
+19.03.2026 73
+--- PAGE 74 ---
+Dodatkowe metody na tablicach
+▪ push()
+▪ dodaje element do tablicy
+▪ shift()
+▪ zdejmuje element z początku tablicy
+▪ unshift()
+▪ dodaje element na początek tablicy
+▪ [].indexOf(n)
+▪ zwraca indeks pierwszego wystąpienia elementu lub -1
+▪ lastIndexOf – ostatniego wystąpienia
+▪ [].slice(n, m)
+▪ zwraca elementy tablicy począwszy od indeksu n (włącznie) do m (rozłącznie)
+19.03.2026 74
+--- PAGE 75 ---
+Dodatkowe metody na ciągach tekstowych
+▪ trim()
+▪ usuwa białe znaki z początku i końca tekstu
+▪ padStart(3, „0”)
+▪ dopełnia liczbę zerami z lewej strony
+▪ ”jakiś ciąg”.split(” ”)
+▪ rozbija ciąg tekstowy na podstawie podanego separatora
+▪ [].join(” ”)
+▪ skleja elementy tablicy w ciąg tekstowy z wykorzystaniem podanego separatora
+▪ „ABC”.repeat(3)
+▪ zwraca ciąg tekstowy powielony wskazaną liczbę razy
+19.03.2026 75
+--- PAGE 76 ---
+Zmienna liczba parametrów
+function max(... values ) {
+let currentMax = - Infinity ;
+console . log ( max( - 10 , 0, 10 , 20 ));
+for ( let value of values ) {
+// > 20
+if ( value > currentMax ) {
+currentMax = value ;
+let values = [ 5, 10 , 15 ];
+}
+console . log ( max(... values ));
+}
+// > 15
+return currentMax ;
+}
+19.03.2026 76
+--- PAGE 77 ---
+Metody i właściwości obiektu Math
+▪ Math.min ()
+▪ Math.max ()
+▪ Math.cos ()
+▪ Math.sin ()
+▪ Math.tan ()
+▪ Math.acos ()
+▪ Math.asin ()
+▪ Math.atan ()
+▪ Math.PI
+▪ Math.random ()
+▪ Math.floor ()
+19.03.2026 77
+--- PAGE 78 ---
+Destrukturyzacja (destructuring)
+▪ Wyodrębnianie właściwości lub console . log ( " Destructuring arrays " );
+let items = [ 1, 2, 3, 4, 5];
+elementów tablicy.
+const [ first , second , ... rest ] = items ;
+console . log ( first );
+▪ Skrócone przypisanie wielu
+// > 1
+wartości w jednej instrukcji.
+console . log ( second );
+// > 2
+▪ Możliwość nadawania aliasów
+console . log ( rest );
+zmiennym. // > [3,4,5]
+▪ Podobne do list() w starym PHP.
+// ......
+19.03.2026 78
+--- PAGE 79 ---
+Opcjonalny dostęp do właściwości
+▪ Bezpieczny dostęp do
+const person = {
+właściwości obiektów (?. )
+name: "Artur" ,
+address : {
+▪ Brak błędu przy null lub
+city : "Szczecin" ,
+undefined
+},
+▪ Zwraca undefined zamiast };
+wyjątku
+console . log ( person . address ?. city );
+▪ Możliwość łańcuchowego // > Szczecin
+sprawdzania zagnieżdżeń
+console . log ( person . contact ?. phone );
+▪ Skrócenie kodu zamiast wielu // > undefined
+warunków (if )
+19.03.2026 79
+--- PAGE 80 ---
+Wyzwanie
+▪ Należy zaimplementować funkcję average():
+▪ przyjmującą zmienną liczbę parametrów
+▪ zwracającą wartość średnią
+19.03.2026 80
+--- PAGE 81 ---
+19.03.2026
+81
+Wyrażenia
+regularne
+--- PAGE 82 ---
+Wyrażenia regularne
+▪ Ciąg znaków używany do opisywania, parsowania, przeszukiwania
+ciągów znaków według określonych reguł.
+▪ Przykład:
+▪ „Robert|Bob”
+▪ „^[a-zA-Z]”
+▪ Zastosowanie:
+▪ weryfikacja email, URL, kody pocztowe,
+▪ wyszukiwanie i zamiana tekstów,
+▪ wybieranie fragmentów z ciągu znaków na podstawie zaawansowanych
+wzorców.
+19.03.2026 82
+--- PAGE 83 ---
+Znaki i symbole
+▪ Niektóre znaki mają specjalne znaczenie.
+▪ ^ - początek linii
+▪ $ - koniec linii
+▪ \ - escape’owanie znaków
+▪ {n} – dokładnie n znaków
+▪ {n,} – co najmniej n znaków
+▪ {n,m} – od n do m znaków
+▪ () – grupa znaków
+▪ | - lub
+▪ * - 0 lub więcej powtórzeń
+▪ + - 1 lub więcej powtórzeń
+▪ . – dowolny znak
+19.03.2026 83
+--- PAGE 84 ---
+Klasy znaków i kotwice
+▪ \d – cyfra dziesiętna
+▪ \D – każdy znak inny niż cyfra dziesiętna
+▪ \s – dowolny biały znak
+▪ \S – dowolny znak inny niż biały znak
+▪ \w – dowolne słowo
+▪ \W – dowolne nie-słowo
+▪ \b – ograniczenie słowa
+▪ \B – ograniczenie nie-słowa
+▪ Własne klasy:
+▪ [aeiou]
+▪ [0-9a-z]
+▪ [^<]
+▪ \A – początek tekstu (niezależne od modyfikatora m)
+▪ \Z – koniec tekstu (niezależne od modyfikatora m)
+19.03.2026 84
+--- PAGE 85 ---
+Tworzenie wyrażeń regularnych
+▪ Dwa sposoby:
+▪ new RegExp(”abc”)
+▪ /abc/
+▪ Uwaga źle:
+▪ ”/abc/”
+19.03.2026 85
+--- PAGE 86 ---
+Testowanie dopasowania wyrażenia regularnego
+console . log ( /abc/ . test ( " abcde " ));
+// > true
+console . log ( /abc/ . test ( " abxyzde " ));
+// > false
+let dateTime = / \ d\ d- \ d\ d- \ d\ d\ d\ d \ d\ d: \ d\ d/ ;
+console . log ( dateTime . test ( "01 - 01 - 2000 00:00" ));
+// > true
+console . log ( dateTime . test ( "01 - JAN - 2000 00:00" ));
+// > false
+19.03.2026 86
+--- PAGE 87 ---
+Wybieranie fragmentów ciągu
+let match = / \ d+/ . exec ( " Your secret PIN is 1234" );
+console . log ( match );
+console . log ( match . index );
+19.03.2026 87
+--- PAGE 88 ---
+Zastępowanie fragmentów tekstu
+console . log ( "mama" . replace ( "m" , "t" ));
+// > ???
+console . log ( "mama" . replace ( /m/ , "t" ));
+// > ???
+console . log ( "mama" . replace ( /m/g , "t" ));
+// > ???
+19.03.2026 88
+--- PAGE 89 ---
+Wstawianie kodu JavaScript
+<!DOCTYPE html >
+<html lang ="en" >
+<head >
+<meta charset ="UTF - 8" >
+<title >Including JavaScript</ title >
+<script src ="./includes.js" ></ script >
+<script >
+alert ( "From HTML!" );
+</ script >
+</ head >
+<body >
+<button onclick =" alert ( 'From button !' ) " >Click !</ button >
+</ body >
+</ html >
+19.03.2026 89
+--- PAGE 90 ---
+19.03.2026
+90
+Pytania?
+--- PAGE 91 ---
+PODOBAŁO SIĘ! NIE PODOBAŁO SIĘ!
+https://ispot.link/sztos https://ispot.link/meh
+19.03.2026 91
