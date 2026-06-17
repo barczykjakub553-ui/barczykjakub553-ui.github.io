@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ car.subject }}{% endblock %}
+
+{% block content %}
+    <h1>{{ car.subject }}</h1>
+    <h2 class="car-model">{{ car.car_model }}</h2>
+    <article>
+        {{ car.content }}
+    </article>
+    <ul class="action-list">
+        <li><a href="{{ url_for('cars_index') }}">Back to list</a></li>
+        <li><a href="{{ url_for('cars_edit', car_id=car.id) }}">Edit</a></li>
+    </ul>
+{% endblock %}

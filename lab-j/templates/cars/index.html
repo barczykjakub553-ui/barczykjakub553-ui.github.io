@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <a href="{{ url_for('cars_create') }}">Create new</a>
+    <ul class="index-list">
+        {% for car in cars %}
+            <li>
+                <h3>{{ car.subject }}</h3>
+                <p class="car-model">Car model: {{ car.car_model }}</p>
+                <ul class="action-list">
+                    <li><a href="{{ url_for('cars_show', car_id=car.id) }}">Details</a></li>
+                    <li><a href="{{ url_for('cars_edit', car_id=car.id) }}">Edit</a></li>
+                    <li>
+                        <form action="{{ url_for('cars_delete', car_id=car.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,19 @@
+<div class="form-group">
+    <label for="subject">Subject</label>
+    <input type="text" id="subject" name="subject" value="{{ car.subject if car else '' }}">
+</div>
+
+<div class="form-group">
+    <label for="content">Content</label>
+    <textarea id="content" name="content">{{ car.content if car else '' }}</textarea>
+</div>
+
+<div class="form-group">
+    <label for="carModel">Car model</label>
+    <input type="text" id="carModel" name="carModel" value="{{ car.car_model if car else '' }}">
+</div>
+
+<div class="form-group">
+    <label></label>
+    <input type="submit" value="Submit">
+</div>

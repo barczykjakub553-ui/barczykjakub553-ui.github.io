@@ -1,0 +1,1 @@
+print(f"Hello JAKUB. This environment is using Python Version 3.14.0 at location DYSK MD")

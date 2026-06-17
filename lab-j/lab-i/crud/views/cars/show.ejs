@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= car.subject %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= car.subject %></h1>
+    <h2 class="car-model"><%= car.carModel %></h2>
+    <article>
+      <%= car.content %>
+    </article>
+    <ul class="action-list">
+      <li><a href="/cars">Back to list</a></li>
+      <li><a href="/cars/<%= car.id %>/edit">Edit</a></li>
+    </ul>
+  </body>
+</html>
