@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="pl.edu.zut.wi.ni57722" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>jakub 57722</name>
+    <description>Weather App</description>
+    <author email="bj57722@zut.edu.pl" href="https://www.wi.zut.edu.pl">
+        Jakub Barczyk
+    </author>
+    <content src="weather.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+</widget>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jakub Barczyk - Lab D</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+<main class="container">
+    <h1>Sprdz pogode</h1>
+
+    <form id="searchForm" class="search-row" onsubmit="return false;">
+        <input id="cityInput" type="text" placeholder="Miasto" aria-label="Miasto" />
+        <button id="checkWeatherBtn" type="button">Pogoda</button>
+    </form>
+
+    <div id="messages" aria-live="polite"></div>
+
+    <section id="currentWeather" class="card-list"></section>
+
+    <section id="forecast" class="card-list"></section>
+</main>
+</body>
+</html>
