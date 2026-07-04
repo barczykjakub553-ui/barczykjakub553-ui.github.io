@@ -1,120 +1,139 @@
-/* Tło całej strony */
+/* Tło całej strony - Agresywny Neonowy Żółty */
 body {
-  background: #232323;
-  color: #222;
-  font-family: 'Georgia', 'Times New Roman', serif;
+  background: #fffb00;
+  color: #000000;
+  font-family: 'Impact', 'Arial Black', sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* Główny kontener */
+/* Główny kontener - Surowe pudła z grubym ramami */
 main, header, footer {
-  background: #fff;
-  max-width: 95vw; /* Automatyczna szerokość, dostosowuje się do ekranu */
-  margin: 5vh auto 0 auto; /* Margines pionowy względny */
-  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
-  border-radius: 20px;
-  padding: 5vw 5vw 3vw 5vw; /* Padding względny */
-  box-sizing: border-box; /* Uwzględnia padding w szerokości */
+  background: #ffffff;
+  max-width: 95vw;
+  margin: 4vh auto;
+  border: 4px solid #000000;
+  box-shadow: 12px 12px 0px #000000;
+  border-radius: 0px; /* Koniec z zaokrągleniami */
+  padding: 4vw;
+  box-sizing: border-box;
 }
 
 img {
-  border: #111111;
-  max-width: 100%; /* Obrazy automatycznie dostosowują szerokość */
+  border: 4px solid #000000;
+  max-width: 100%;
   height: auto;
 }
 
 header {
   margin-bottom: 0;
-  padding-bottom: 0;
-  box-shadow: none;
-  background: #fff;
+  padding-bottom: 4vw;
+  box-shadow: 12px 12px 0px #000000;
+  background: #00f0ff; /* Jaskrawy Cyjan dla kontrastu */
 }
 
 footer {
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-  background: #fff;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+  background: #ff0055; /* Wściekły Róż/Czerwień */
   text-align: center;
-  font-size: 1rem;
-  color: #888;
-  border-radius: 12px;
-  box-shadow: none;
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 0px;
+  box-shadow: 12px 12px 0px #000000;
+  text-transform: uppercase;
 }
 
 h1, h2, h3 {
-  font-family: 'Playfair Display', 'Georgia', serif;
-  font-weight: 400;
-  color: #222;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-}
-h1 {
-  font-size: 2.5rem;
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-weight: 900;
+  color: #000000;
+  margin-top: 1em;
+  margin-bottom: 0.3em;
+  text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+h1 {
+  font-size: 4rem; /* Wielki krzyk */
   text-align: center;
-  margin-bottom: 1.5em;
-  border-radius: 100px;
+  background: #ffffff;
+  border: 4px solid #000000;
+  padding: 15px;
+  box-shadow: 8px 8px 0px #000000;
+  border-radius: 0px;
+  transform: rotate(-1deg); /* Lekkie brutalistyczne skrzywienie */
 }
+
 h2 {
-  font-size: 1.5rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-top: 2.5em;
+  font-size: 2.5rem;
+  background: #fffb00;
+  display: inline-block;
+  padding: 0 10px;
+  border: 3px solid #000;
 }
+
 h3 {
-  font-size: 1.15rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  font-size: 1.8rem;
+  text-decoration: underline;
 }
 
 p {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  font-family: 'Arial', sans-serif; /* Bardziej surowy dla tekstu */
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.5;
   margin: 1.2em 0;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 ul {
-  background: #efeeee;
-  border-radius: 12px;
-  padding: 1em 2em;
+  background: #ffffff;
+  border: 4px solid #000000;
+  border-radius: 0px;
+  padding: 2em;
   margin: 2em 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-}
-li {
-  font-size: 1.1rem;
-  margin: 0.5em 0;
+  box-shadow: 8px 8px 0px #000000;
 }
 
-/* Pasek nawigacji */
+li {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0.8em 0;
+  list-style-type: square; /* Kwadraty zamiast kropek */
+}
+
+/* Pasek nawigacji - Blokowy, ciężki */
 nav {
-  background: #fff;
+  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2.5em;
-  padding: 1.5em 0 1em 0;
-  border-bottom: 1px solid #eee;
-  font-family: 'Playfair Display', 'Georgia', serif;
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
+  gap: 1.5em;
+  padding: 1.5em;
+  border: 4px solid #000000;
+  box-shadow: 8px 8px 0px #000000;
+  font-size: 1.4rem;
   text-transform: uppercase;
-  margin-bottom: 2em;
-}
-nav a {
-  color: #222;
-  text-decoration: none;
-  padding-bottom: 0.2em;
-  border-bottom: 2px solid transparent;
-  transition: border 0.2s, color 0.2s;
-}
-nav a.active, nav a:hover {
-  border-bottom: 2px solid #222;
-  color: #111;
+  margin-bottom: 3em;
 }
 
-/* Dropdown menu (Kategorie) */
+nav a {
+  color: #000000;
+  text-decoration: none;
+  padding: 5px 15px;
+  border: 2px solid transparent;
+}
+
+nav a.active, nav a:hover {
+  background: #ff0055;
+  color: #ffffff;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+/* Dropdown menu */
 nav .dropdown {
   position: relative;
   display: flex;
@@ -124,187 +143,150 @@ nav .dropdown {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  margin: 50px;
+  margin: 50px 0;
 }
 
 .main-image-container {
   width: 100%;
   flex: 1;
 }
+
 nav .dropdown .categories {
   display: none;
   position: absolute;
   left: 50%;
-  top: 2.5em;
+  top: 3em;
   transform: translateX(-50%);
-  min-width: 220px;
+  min-width: 250px;
   z-index: 100;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-  padding: 1.5em 2em;
+  border: 4px solid #000000;
+  box-shadow: 8px 8px 0px #000000;
+  padding: 1.5em;
   margin: 0;
+  background: #fffb00;
 }
+
 nav .dropdown:hover .categories,
 nav .dropdown:focus-within .categories {
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
+
 nav .dropdown .dropdown-toggle::after {
-  content: " ▼";
-  font-size: 0.7em;
-  color: #888;
+  content: " [X]";
+  font-size: 0.9em;
+  color: #000000;
+  font-weight: 900;
 }
 
 /* Boksy/kategorie */
 .categories {
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  padding: 1.5em 2em;
+  background: #00f0ff;
+  border: 4px solid #000000;
+  border-radius: 0px;
+  box-shadow: 8px 8px 0px #000000;
+  padding: 1.5em;
   margin: 2em 0;
   display: flex;
   flex-direction: column;
   gap: 1em;
-  font-size: 1.05rem;
-  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 1.2rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
+
 .categories a {
-  color: #222;
+  color: #000000;
   text-decoration: none;
-  transition: color 0.2s;
+  font-weight: bold;
+  background: #ffffff;
+  padding: 5px;
+  border: 2px solid #000;
 }
+
 .categories a:hover {
-  color: #888;
+  background: #ff0055;
+  color: #ffffff;
 }
 
 /* Karty z treścią */
 .card {
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-  margin: 2em 0;
-  padding: 2em;
-  width: auto; /* Szerokość automatyczna */
-  max-width: 100%; /* Maksymalna szerokość 100% */
-  box-sizing: border-box; /* Uwzględnia padding */
-}
-.card img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 1em;
+  background: #ffffff;
+  border: 4px solid #000000;
+  border-radius: 0px;
+  box-shadow: 10px 10px 0px #000000;
+  margin: 3em 0;
+  padding: 2.5em;
+  box-sizing: border-box;
 }
 
-/* Stylizacja obrazka głównego na stronie */
+.card img {
+  width: 100%;
+  border-radius: 0px;
+  border: 4px solid #000000;
+  margin-bottom: 1.5em;
+}
+
+/* Stylizacja obrazka głównego */
 .main-image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2.5rem auto 1.5rem auto;
-  max-width: 90vw; /* Automatyczna szerokość */
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 20px 24px rgba(0,0,0,0.10);
-  background: #fff;
+  margin: 3rem auto;
+  max-width: 90vw;
+  border-radius: 0px;
+  overflow: visible;
+  border: 6px solid #000000;
+  box-shadow: 16px 16px 0px #000000;
+  background: #ffffff;
 }
+
 .main-image-container img {
   width: 100%;
   max-width: 100%;
   height: auto;
   display: block;
-  border-radius: 18px;
+  border-radius: 0px;
   object-fit: cover;
+  border: none;
 }
 
-/* Responsywność */
+/* Responsywność bez zmiękczania stylu */
 @media (max-width: 1200px) {
   main, header, footer {
     max-width: 95vw;
-    padding: 4vw 4vw 3vw 4vw;
-  }
-  nav {
-    gap: 2em;
   }
 }
+
 @media (max-width: 1000px) {
   main, header, footer {
     max-width: 98vw;
-    padding: 3vw 3vw 2vw 3vw;
   }
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1.3rem;
-  }
-  h3 {
-    font-size: 1rem;
-  }
-  nav {
-    gap: 1.5em;
-    font-size: 1rem;
-  }
+  h1 { font-size: 2.8rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
 }
+
 @media (max-width: 800px) {
   .main-image-container {
-    max-width: 98vw;
-  }
-  .main-image-container img {
-    max-width: 98vw;
+    max-width: 95vw;
   }
   .chicken-container {
-    flex-direction: column; /* Na małych ekranach obrazy jeden pod drugim */
-    gap: 10px;
+    flex-direction: column;
+    gap: 20px;
   }
 }
+
 @media (max-width: 600px) {
   main, header, footer {
-    padding: 2vw 2vw 1vw 2vw;
-    margin: 2vh auto 0 auto;
+    margin: 2vh auto;
+    border: 3px solid #000;
+    box-shadow: 6px 6px 0px #000;
   }
   nav {
     flex-direction: column;
-    gap: 1em;
-    font-size: 0.9rem;
-  }
-  h1 {
-    font-size: 1.8rem;
-  }
-  h2 {
-    font-size: 1.1rem;
-  }
-  h3 {
-    font-size: 0.9rem;
-  }
-  p {
-    font-size: 1rem;
-  }
-  ul {
-    padding: 0.5em 1em;
-  }
-  li {
-    font-size: 1rem;
-  }
-  .card {
+    gap: 0.5em;
     padding: 1em;
   }
-  .categories {
-    padding: 1em;
-  }
-}
-@media (max-width: 400px) {
-  main, header, footer {
-    padding: 1vw 1vw 0.5vw 1vw;
-    margin: 1vh auto 0 auto;
-  }
-  nav {
-    font-size: 0.8rem;
-  }
-  h1 {
-    font-size: 1.5rem;
-  }
-  .card {
-    padding: 0.5em;
-  }
+  h1 { font-size: 2rem; }
 }
