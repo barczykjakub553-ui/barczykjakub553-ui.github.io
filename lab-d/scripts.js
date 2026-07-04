@@ -58,27 +58,57 @@ function getCurrentWeatherXHR(city) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     const url = `${API_BASE}/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric&lang=pl`;
+
     xhr.open('GET', url);
     xhr.responseType = 'json';
     xhr.onload = () => {
-      if (xhr.status === 200) {
+      console.log(xhr.response)
+      // Sprawdzamy, czy status HTTP wskazuje na sukces (200-299)
+      if (xhr.status >= 200 && xhr.status < 300) {
         resolve(xhr.response);
+      } else {
+        // Jeśli serwer zwróci błąd (np. 404 - nie znaleziono miasta), odrzucamy obietnicę
+        reject({
+          status: xhr.status,
+          message: xhr.response?.message || 'Błąd serwera podczas pobierania pogody'
+        });
       }
     };
-    xhr.onerror = () => reject({ message: 'blad xhr' });
+
+    // Obsługa błędów sieciowych (np. brak połączenia z internetem)
+    xhr.onerror = () => reject({ message: 'Błąd sieciowy XHR' });
+
     xhr.send();
   });
 }
 
 function getForecastFetch(city) {
   const url = `${API_BASE}/forecast?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric&lang=pl`;
+
   return fetch(url).then(resp => {
     if (!resp.ok) {
-      return resp.json().then(j => { throw j; }).catch(() => { throw { message: `${resp.status} ${resp.statusText}` }; });
+      return resp.json()
+        .then(errData => {
+          // Logowanie zawartości w przypadku BŁĘDU z serwera (np. złe miasto)
+          console.log("Zawartość z URL (BŁĄD):", errData);
+          throw errData;
+        })
+        .catch(() => {
+          throw { message: `${resp.status} ${resp.statusText}` };
+        });
     }
-    return resp.json();
+
+    // Zamiast od razu robić 'return resp.json()', przetwarzamy dane...
+    return resp.json().then(data => {
+      // ... wyświetlamy ZAWARTOSĆ w konsoli ...
+      console.log("Zawartość z URL (SUKCES):", data);
+
+      // ... i podajemy je dalej, by funkcja zwróciła to, co powinna
+      return data;
+    });
+
   }).catch(err => {
-    err = null;
+    console.error(err);
     return null;
   });
 }

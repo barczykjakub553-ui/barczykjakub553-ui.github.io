@@ -1,5 +1,5 @@
 let podpowiedz = true;
-let mieszanie = false;
+let mieszanie = true;
 
 const GRID = 4, TILE = 96, SIZE = GRID * TILE; //rozmiary
 let map, marker, tiles = [];

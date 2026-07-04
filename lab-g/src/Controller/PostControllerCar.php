@@ -10,9 +10,9 @@ class PostControllerCar
 {
     public function indexAction(Templating $templating, Router $router): ?string
     {
-        $posts = PostCar::findAll();
+        $postsCarS = PostCar::findAll();
         return $templating->render('postCar/index.html.php', [
-            'posts' => $posts,
+            'postsCarS' => $postsCarS,
             'router' => $router,
         ]);
     }
@@ -20,34 +20,34 @@ class PostControllerCar
     public function createAction(?array $requestPost, Templating $templating, Router $router): ?string
     {
         if ($requestPost) {
-            $post = PostCar::fromArray($requestPost);
+            $postCar = PostCar::fromArray($requestPost);
             // @todo missing validation
-            $post->save();
+            $postCar->save();
 
             $path = $router->generatePath('post-index');
             $router->redirect($path);
             return null;
         } else {
-            $post = new PostCar();
+            $postCar = new PostCar();
         }
 
         return $templating->render('postCar/create.html.php', [
-            'post' => $post,
+            'postCar' => $postCar,
             'router' => $router,
         ]);
     }
 
     public function editAction(int $postId, ?array $requestPost, Templating $templating, Router $router): ?string
     {
-        $post = PostCar::find($postId);
-        if (! $post) {
+        $postCar = PostCar::find($postId);
+        if (! $postCar) {
             throw new NotFoundException("Missing post with id $postId");
         }
 
         if ($requestPost) {
-            $post->fill($requestPost);
+            $postCar->fill($requestPost);
             // @todo missing validation
-            $post->save();
+            $postCar->save();
 
             $path = $router->generatePath('post-index');
             $router->redirect($path);
@@ -55,32 +55,32 @@ class PostControllerCar
         }
 
         return $templating->render('postCar/edit.html.php', [
-            'post' => $post,
+            'postCar' => $postCar,
             'router' => $router,
         ]);
     }
 
     public function showAction(int $postId, Templating $templating, Router $router): ?string
     {
-        $post = PostCar::find($postId);
-        if (! $post) {
+        $postCarS = PostCar::find($postId);
+        if (! $postCarS) {
             throw new NotFoundException("Missing post with id $postId");
         }
 
         return $templating->render('postCar/show.html.php', [
-            'post' => $post,
+            'postCar' => $postCarS,
             'router' => $router,
         ]);
     }
 
     public function deleteAction(int $postId, Router $router): ?string
     {
-        $post = PostCar::find($postId);
-        if (! $post) {
+        $postCar = PostCar::find($postId);
+        if (! $postCar) {
             throw new NotFoundException("Missing post with id $postId");
         }
 
-        $post->delete();
+        $postCar->delete();
         $path = $router->generatePath('post-index');
         $router->redirect($path);
         return null;
