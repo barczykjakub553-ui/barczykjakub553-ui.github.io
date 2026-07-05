@@ -1,5 +1,6 @@
 import os
 import sqlite3
+from datetime import date
 from flask import Flask, render_template, request, redirect, url_for, abort
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -7,6 +8,11 @@ DATABASE = os.path.join(BASE_DIR, 'database.db')
 SCHEMA = os.path.join(BASE_DIR, 'schema.sql')
 
 app = Flask(__name__)
+
+
+@app.context_processor
+def inject_year():
+    return {'current_year': date.today().year}
 
 
 def get_db():

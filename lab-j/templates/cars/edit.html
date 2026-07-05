@@ -1,10 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block title %}{{ title }}{% endblock %}
+{% block bodyclass %}edit{% endblock %}
 
 {% block content %}
     <h1>{{ title }}</h1>
-    <form action="{{ url_for('cars_edit', car_id=car.id) }}" method="POST">
+    <form action="{{ url_for('cars_edit', car_id=car.id) }}" method="POST" class="edit-form">
         {% include 'cars/_form.html' %}
     </form>
     <a href="{{ url_for('cars_index') }}">Back to list</a>
